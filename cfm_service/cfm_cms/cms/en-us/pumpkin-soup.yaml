@@ -1,0 +1,64 @@
+id: pumpkin-soup
+title: Pumpkin Soup
+locale: en-us
+difficulty: easy
+
+tools:
+  - Hand mixer
+
+ingredients:
+  - basic:
+      id: pumpkin
+      amount: 400
+      unit: g
+  - basic:
+      id: onion
+      amount: 1
+      unit: piece
+  - basic:
+      id: garlic
+      amount: 2
+      unit: clove
+  - basic:
+      id: cream
+      amount: 4
+      unit: soup spoon
+      alternative:
+        id: coconut cream
+        amount: 400
+        unit: ml
+  - extra:
+      id: pumpkin seeds
+      amount: 1
+      unit: bunch
+
+steps:
+  - step:
+      do: Peel and cut the pumpkin and remove the seeds.
+  - step:
+      do: Dice the pumkin.
+  - step:
+      do: Clean and dice the garlic.
+  - step:
+      do: Clean and dice the onion.
+  - step:
+      do: Put diced pumpkin, garlic and onion to a pot.
+  - step:
+      do: Pour water into that pot, just enough to submerge everything.
+  - step:
+      do: Bring to boil.
+  - time_step:
+      do: Simmer.
+      time: 30
+      unit: min
+  - tool_step:
+      do: Mix.
+      tool: Hand mixer
+  - step:
+      do: Add the cream.
+  - time_step:
+      do: Simmer a bit more, occasionally stirring with a spoon.
+      time: 10
+      unit: min
+  - step:
+      do: Season with salt, pepper, and whatever else you like.

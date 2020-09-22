@@ -1,0 +1,45 @@
+id: scrabled-eggs
+title: Scrambled Eggs
+locale: en-us
+difficulty: easy
+
+tools:
+
+ingredients:
+  - basic:
+      id: egg
+      amount: 3
+      unit: piece
+  - basic:
+      id: onion
+      amount: 1
+      unit: piece
+  - basic:
+      id: garlic
+      amount: 1
+      unit: clove
+  - extra:
+      id: mushroom
+      amount: 2
+      unit: stripe
+
+steps:
+  - step:
+      do: Peel and dice the onion.
+  - step:
+      do: Break the eggs in a bowl and mix them.
+  - until_step:
+      do: Heat up the pan with some oil on it.
+      until: The pan is hot.
+  - step:
+      do: Throw the onions into the pan.
+  - until_step:
+      do: Stir occasionally.
+      until: The onion is trasnparent.
+  - step:
+      do: Add the eggs into the pan.
+  - until_step:
+      do: Keep stirring the eggs.
+      until: The eggs are almost dry.
+  - step:
+      do: Smash the scrabled eggs on a plate.
