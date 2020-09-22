@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+export FLASK_APP=cfm_service/server.py
+export FLASK_APP_SETTINGS=cfm_service.test_settings.TestConfig
+
+flask run
