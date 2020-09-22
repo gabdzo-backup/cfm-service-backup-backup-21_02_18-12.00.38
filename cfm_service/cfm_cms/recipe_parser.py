@@ -5,9 +5,9 @@ import os
 from pathlib import Path
 from typing import Iterator
 
+from cfm_core import recipe
 import yaml
 
-from cfm_core import recipe
 
 # default path is relative from this script, two times up and then into cms/en-us folder
 DEFAULT_CMS_PATH = (

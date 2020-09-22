@@ -2,11 +2,11 @@
 
 from typing import List, Optional, Tuple
 
+from cfm_cms import recipe_parser as parser
 from cfm_core.advice import Advice
 from cfm_core.ingredient import Ingredient, RecipeIngredient
 from cfm_core.pantry import Pantry
 from cfm_core.recipe import Recipe
-from cfm_cms import recipe_parser as parser
 
 
 class DishAdvisor(object):
