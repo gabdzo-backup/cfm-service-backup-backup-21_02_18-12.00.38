@@ -1,5 +1,9 @@
+"""Docstring."""
+
+
 class Config(object):
-    SERVER_NAME = "cfm-service-1"
+    """Docstring."""
+
     DEBUG = False
 
     STORAGE = "memory"
