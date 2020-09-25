@@ -4,7 +4,7 @@ import logging
 import os
 
 from cfm_service.server_impl import ServerImpl
-from flask import Flask
+from flask import Flask, jsonify
 
 
 logging.basicConfig(
@@ -39,4 +39,10 @@ def hello_world():
 def advise_pantry(pantry_id: str):
     """Docstring."""
     advices = server.advise_pantry(pantry_id)
-    return advices
+    return jsonify(advices)
+
+
+@app.route("/pantry/<pantry_id>")
+def get_pantry(pantry_id: str):
+    """Docstring."""
+    return jsonify(server.get_pantry(pantry_id))

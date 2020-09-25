@@ -24,7 +24,8 @@ class DishAdvisorTest(unittest.TestCase):
     def test_advice_when_having_one_egg(self):
         """Check if advice is given when having one egg."""
         pantry = Pantry([ingredient.Ingredient("egg", 1, "piece")])
-        advices = DishAdvisor().advise(pantry)
+        adviser = DishAdvisor()
+        advices = adviser.advise(pantry)
 
         # we expect one advice
         self.assertEqual(1, len(advices))
@@ -40,6 +41,10 @@ class DishAdvisorTest(unittest.TestCase):
             # we also expect one of the missing ingredients to be 2 eggs
             if mi.id == "egg":
                 self.assertEqual(2, mi.amount)
+
+        # make sure the advice is reproducible
+        advices = adviser.advise(pantry)
+        self.assertEqual(1, len(advices))
 
     def test_pair_replacements(self):
         """Test pair replacements."""

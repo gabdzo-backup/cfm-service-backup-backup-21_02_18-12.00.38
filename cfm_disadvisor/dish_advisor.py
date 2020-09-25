@@ -14,7 +14,7 @@ class DishAdvisor(object):
 
     def __init__(self, recipes=None):
         """Constructor."""
-        self.recipes = parser.load_recipes() if recipes is None else recipes
+        self.recipes = list(parser.load_recipes()) if recipes is None else recipes
 
     def advise(self, pantry) -> List[Advice]:
         """Orchestrator to advise recipes.

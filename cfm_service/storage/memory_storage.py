@@ -4,7 +4,7 @@ from typing import Dict
 
 from cfm_core.ingredient import Ingredient
 from cfm_core.pantry import Pantry
-from storage import CfmStorage
+from cfm_service.storage import CfmStorage
 
 
 class InMemoryCfmStorage(CfmStorage):
@@ -13,7 +13,7 @@ class InMemoryCfmStorage(CfmStorage):
     def __init__(self):
         """Docstring."""
         self.pantries: Dict[str, Pantry] = {
-            "1": Pantry([Ingredient("egg", 1, "piece")])
+            "-1": Pantry([Ingredient("egg", 1, "piece")])
         }
         self.next_id = 0
 

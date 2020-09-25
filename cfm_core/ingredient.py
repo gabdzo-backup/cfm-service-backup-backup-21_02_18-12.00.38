@@ -21,12 +21,12 @@ class Ingredient:
         return asdict(self)
 
 
-class IngredientRole(Enum):
+class IngredientRole(int, Enum):
     """Ingredient role."""
 
-    BASIC = 1
-    EXTRA = 2
-    ALTERNATIVE = 3
+    BASIC: int = 1
+    EXTRA: int = 2
+    ALTERNATIVE: int = 3
 
 
 @dataclass
