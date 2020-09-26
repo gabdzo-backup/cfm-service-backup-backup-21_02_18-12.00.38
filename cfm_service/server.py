@@ -26,7 +26,14 @@ app.logger.info("Loaded settings {}".format(app.config))
 storage_type = app.config["STORAGE"]
 app.logger.info("Storage backend will be: {}".format(storage_type))
 
-server = ServerImpl(storage_type)
+if storage_type == "memory":
+    storage_config = {}
+elif storage_type == "cassandra":
+    storage_config = app.config["CASSANDRA"]
+else:
+    storage_config = {}
+
+server = ServerImpl(storage_type, storage_config)
 
 
 @app.route("/ping")
