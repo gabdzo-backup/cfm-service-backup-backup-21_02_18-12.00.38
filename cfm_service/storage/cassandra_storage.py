@@ -1,5 +1,4 @@
 """Docstring."""
-import json
 import logging
 
 from cassandra.auth import PlainTextAuthProvider
@@ -35,8 +34,7 @@ class CassandraCfmStorage(CfmStorage):
 
     def store_pantry(self, user_id: str, pantry_id: str, pantry: Pantry) -> str:
         """Docstring."""
-        ingredients = pantry.asdict()["ingredients"]
-        statement = self.pantry_store.bind([pantry_id, json.dumps(ingredients)])
+        statement = self.pantry_store.bind([pantry_id, str(pantry)])
         self.session.execute(statement)
         return "OK"
 
@@ -45,7 +43,4 @@ class CassandraCfmStorage(CfmStorage):
         statement = self.pantry_lookup.bind([pantry_id])
         rows = self.session.execute(statement)
         pantry_id, blob = rows.all().pop()
-        ingredients = json.loads(blob)
-        # ingredients are a list of dicts like [{'id': 'egg', 'amount': 1, 'unit': 'piece'}]
-        p = Pantry([Ingredient(*i.values()) for i in ingredients])
-        return p
+        return Pantry.from_str(blob)

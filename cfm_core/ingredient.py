@@ -9,16 +9,25 @@ class Ingredient:
     """Model to represent ingredient."""
 
     id: str
-    amount: int
+    amount: float
     unit: str
 
     def __eq__(self, other):
         """Magic eq method."""
-        return self.id == other.name
+        return self.id == other.id
+
+    def __str__(self):
+        """Docstring."""
+        return ",".join(map(str, self.asdict().values()))
 
     def asdict(self):
         """Return as dictionary."""
         return asdict(self)
+
+    @staticmethod
+    def from_str(string):
+        """Docstring."""
+        return Ingredient(**string.split(","))
 
 
 class IngredientRole(int, Enum):
