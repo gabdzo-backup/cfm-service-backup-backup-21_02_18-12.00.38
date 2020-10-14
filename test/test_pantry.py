@@ -11,7 +11,7 @@ class PantryTest(unittest.TestCase):
         """__init__."""
         super().__init__(*args, **kwargs)
 
-    def test_parse_to_string(self):
+    def test_serialize_to_string(self):
         """Test converting pantry to string."""
         i = ingredient.Ingredient(id="egg", amount=1, unit="pc")
         p = pantry.Pantry([i])
@@ -33,3 +33,13 @@ class PantryTest(unittest.TestCase):
             ]
         )
         self.assertEqual(expected, p)
+
+    def test_serialize_multiple(self):
+        """Test converting pantry to string."""
+        p = pantry.Pantry(
+            [
+                ingredient.Ingredient(id="egg", amount=1, unit="pc"),
+                ingredient.Ingredient(id="garlic", amount=2, unit="clove"),
+            ]
+        )
+        self.assertEqual("egg,1,pc;garlic,2,clove", str(p))

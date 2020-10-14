@@ -22,7 +22,7 @@ class Pantry:
 
     def __str__(self) -> str:
         """Docstring."""
-        return ",".join([str(i) for i in self.ingredients])
+        return ";".join([str(i) for i in self.ingredients])
 
     def asdict(self):
         """As dict."""

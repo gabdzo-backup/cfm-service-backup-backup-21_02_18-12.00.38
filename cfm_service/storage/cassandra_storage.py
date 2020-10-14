@@ -15,12 +15,11 @@ class CassandraCfmStorage(CfmStorage):
         """Docstring."""
         logging.getLogger("cassandra").setLevel(storage_config["log_level"])
 
-        auth_provider = PlainTextAuthProvider(
-            storage_config["username"], storage_config["password"]
-        )
-        cloud_config = {"secure_connect_bundle": "secure-connect-cfm.zip"}
+        if "cloud" in storage_config.keys():
+            self.cluster = self._get_cloud_cluster(storage_config)
+        else:
+            self.cluster = self._get_local_cluster(storage_config)
 
-        self.cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
         self.session = self.cluster.connect()
 
         self.pantry_lookup = self.session.prepare(
@@ -31,6 +30,19 @@ class CassandraCfmStorage(CfmStorage):
         )
 
         self.store_pantry("-1", "-1", Pantry([Ingredient("egg", 1, "piece")]))
+
+    def _get_cloud_cluster(self, storage_config: dict) -> Cluster:
+        """Docstring."""
+        auth_provider = PlainTextAuthProvider(
+            storage_config["username"], storage_config["password"]
+        )
+        cloud_config = {"secure_connect_bundle": storage_config["cloud"]}
+
+        return Cluster(cloud=cloud_config, auth_provider=auth_provider)
+
+    def _get_local_cluster(self, storage_config: dict) -> Cluster:
+        """Docstring."""
+        return Cluster(contact_points=storage_config["contact_points"])
 
     def store_pantry(self, user_id: str, pantry_id: str, pantry: Pantry) -> str:
         """Docstring."""

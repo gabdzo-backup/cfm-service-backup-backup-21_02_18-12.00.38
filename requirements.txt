@@ -2,3 +2,4 @@ PyYaml
 tox
 Flask==1.1.2
 cassandra-driver
+ccm==3.1.5
